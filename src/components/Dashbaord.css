@@ -1,0 +1,53 @@
+.custom-bg{
+    background-color: rgb(226, 222, 178);
+    height: 100vh;
+  }
+  .heading {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .black-text {
+    color: black;
+  }
+  .btn:hover {
+    color: inherit;
+  }
+  .box-style {
+    background-color: #e3dddd;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  .box-1 {
+    background-color: rgb(226, 222, 178);
+  }
+  
+  .box-2 {
+    background-color: rgb(226, 222, 178);
+  }
+  
+  .box-3 {
+    background-color: rgb(226, 222, 178);
+  }
+  
+  .box-4 {
+    background-color: rgb(226, 222, 178);
+  }
+ 
+  .button-container {
+    padding-left: 1rem;
+  }
+  
+
+ 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
