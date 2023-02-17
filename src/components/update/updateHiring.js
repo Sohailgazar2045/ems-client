@@ -89,7 +89,7 @@ const UpDateHiring = () => {
         <label>hireDate:</label>
         <input className="update" type="text" name="hireDate" value={update.hireDate} onChange={handleChange} />
 
-        <button type="button" onClick={handleSubmit}>
+        <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
       </form>

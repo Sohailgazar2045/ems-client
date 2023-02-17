@@ -28,12 +28,15 @@ const EmployeeDview = () => {
   // };
 
   const handleDelete = async (employee) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete`);
+    if (confirmDelete){
     try {
       setEmployeeDirectory((prevEmployees) => prevEmployees.filter((emp) => emp._id !== employee._id));
       await axios.delete(`http://localhost:5000/api/employeeDirectory/${employee._id}`);
     } catch (error) {
       console.log(error);
     }
+  }
   };
   
   return (

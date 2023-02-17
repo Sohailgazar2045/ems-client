@@ -10,6 +10,7 @@
     "fullcalendar-reactwrapper": "^1.0.7",
     "react": "^18.2.0",
     "react-calendar": "^4.0.0",
+    "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",

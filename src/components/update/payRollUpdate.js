@@ -80,7 +80,7 @@ const UpdatePayRoll = () => {
         <label>netPay:</label>
         <input className="update" type="text" name="netPay" value={update.netPay} onChange={handleChange} />
         
-        <button type="button" onClick={handleSubmit}>
+        <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
       </form>

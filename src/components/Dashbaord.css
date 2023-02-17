@@ -1,5 +1,5 @@
 .custom-bg{
-    background-color: rgb(226, 222, 178);
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
     height: 100vh;
   }
   .heading {
@@ -8,31 +8,31 @@
     letter-spacing: 2px;
   }
   .black-text {
-    color: black;
+    color: rgb(194, 190, 190);
   }
   .btn:hover {
     color: inherit;
   }
   .box-style {
-    background-color: #e3dddd;
+    background-color: rgba(1,105,156,255);
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(1,105,156,255);
     text-align: center;
   }
   .box-1 {
-    background-color: rgb(226, 222, 178);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
   
   .box-2 {
-    background-color: rgb(226, 222, 178);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
   
   .box-3 {
-    background-color: rgb(226, 222, 178);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
   
   .box-4 {
-    background-color: rgb(226, 222, 178);
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
  
   .button-container {

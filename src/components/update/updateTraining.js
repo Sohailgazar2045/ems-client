@@ -68,7 +68,7 @@ const UpdateTraining = () => {
         <label>skillAquired:</label>
         <input className="update" type="text" name="skillAquired" value={update.skillAquired} onChange={handleChange} />
 
-        <button type="button" onClick={handleSubmit}>
+        <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
       </form>

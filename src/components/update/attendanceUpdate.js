@@ -64,7 +64,7 @@ const UpdateAttendance = () => {
         <label>CheckOutTime:</label>
         <input className="update" type="text" name="checkOutTime" value={update.checkOutTime} onChange={handleChange} />
 
-        <button type="button" onClick={handleSubmit}>
+        <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
       </form>

@@ -14,12 +14,15 @@ const EmployeeTraining = () => {
       .catch(error => console.log(error));
   }, []);
   const handleDelete = async (employee) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete`);
+    if (confirmDelete){
     try {
       await axios.delete(`http://localhost:5000/api/employeeTraining/${employee._id}`);
       setEmployeetraining((prevEmployees) => prevEmployees.filter((emp) => emp._id !== employee._id));
     } catch (error) {
       console.log(error);
     }
+  }
   };
 
   return (

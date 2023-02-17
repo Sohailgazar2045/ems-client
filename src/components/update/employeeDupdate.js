@@ -76,7 +76,7 @@ const UpDateDirectory = () => {
         <label>Date of Hire:</label>
         <input className="update" type="text" name="dateOfHire" value={update.dateOfHire} onChange={handleChange} />
 
-        <button type="button" onClick={handleSubmit}>
+        <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
       </form>

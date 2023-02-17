@@ -88,10 +88,10 @@ const Dashboard = () => {
   };
   return (
     <div className="container-fluid">
-      <div className="row">
+      <div className="row" >
         {/* <!-- Sidebar navigation --> */}
         <div className="col-md-2  custom-bg">
-          <h2 className="heading mt-2">Dashboard</h2>
+          <h2 className="heading mt-2 text-white">Dashboard</h2>
           <br></br>
           <div className="sidebar-search">
             <input type="text" className="form-control" placeholder="Search" />
@@ -153,7 +153,7 @@ const Dashboard = () => {
         <div className="col-md-10">
           <div className="main-bar">
             <div class="row button-container d-flex">
-              <button class="btn col-1 btn-primary btn-sm">
+              <button class="btn col-1 btn-primary btn-sm mt-3">
                 Create Role
               </button>
               <h1 className="heading col-10 text-center">
@@ -166,32 +166,32 @@ const Dashboard = () => {
             <div className="col-md-3">
               <div className="card custom-card box-1 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title">Box 4</h5>
-                  <p className="card-text">Content goes here</p>
+                  <h5 className="card-title text-white">Box 4</h5>
+                  <p className="card-text text-white">Content goes here</p>
                 </div>
               </div>
             </div>
             <div className="col-md-3">
               <div className="card custom-card box-2 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title">Box 4</h5>
-                  <p className="card-text">Content goes here</p>
+                  <h5 className="card-title text-white">Box 4</h5>
+                  <p className="card-text text-white">Content goes here</p>
                 </div>
               </div>
             </div>
             <div className="col-md-3">
               <div className="card custom-card box-3 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title">Box 4</h5>
-                  <p className="card-text">Content goes here</p>
+                  <h5 className="card-title text-white">Box 4</h5>
+                  <p className="card-text text-white">Content goes here</p>
                 </div>
               </div>
             </div>
             <div className="col-md-3">
               <div className="card custom-card box-4 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title">Box 4</h5>
-                  <p className="card-text">Content goes here</p>
+                  <h5 className="card-title text-white">Box 4</h5>
+                  <p className="card-text text-white">Content goes here</p>
                 </div>
               </div>
             </div>

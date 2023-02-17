@@ -14,12 +14,15 @@ const EmployeeAttendance = () => {
   }, []);
 
   const handleDelete = async (employee) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete`);
+    if (confirmDelete){
     try {
       await axios.delete(`http://localhost:5000/api/employeeattendance/${employee._id}`);
       setemployeeAttendance((prevEmployees) => prevEmployees.filter((emp) => emp._id !== employee._id));
     } catch (error) {
       console.log(error);
     }
+  }
   };
 
   return (
