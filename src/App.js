@@ -15,6 +15,8 @@ import EmployeeTraining from './components/dataview/employeeTrainingView';
 import UpdateTraining from './components/update/updateTraining';
 import EmployeeHiringView from './components/dataview/employeehiringView';
 import UpDateHiring from './components/update/updateHiring';
+import RoleView from './components/dataview/manageRole';
+import UpdateUserRoll from './components/update/roleUpdate';
 import { Routes , Route } from 'react-router-dom';
 function App() {
   return (
@@ -41,6 +43,9 @@ function App() {
 
       <Route path='/dashboard/hiring' element={<EmployeeHiringView/>}/>
       <Route path='/dashboard/hiring/:id' element={<UpDateHiring/>}/>
+
+      <Route path='/dashboard/createRole' element={<RoleView/>}/>
+      <Route path='/dashboard/createRole/:id' element={<UpdateUserRoll/>}/>
 
       </Routes>
   );

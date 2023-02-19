@@ -43,6 +43,12 @@ const UpDateDirectory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!update.firstName || !update.lastName || !update.jobTitle || !update.department || !update.contactInformation || !update.dateOfHire) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employeeDirectory", update);
@@ -73,8 +79,8 @@ const UpDateDirectory = () => {
         <label>Contact Information:</label>
         <input className="update" type="text" name="contactInformation" value={update.contactInformation} onChange={handleChange} />
 
-        <label>Date of Hire:</label>
-        <input className="update" type="text" name="dateOfHire" value={update.dateOfHire} onChange={handleChange} />
+        <label>Joinind Date:</label>
+        <input className="update" type="date" name="dateOfHire" value={update.dateOfHire} onChange={handleChange} />
 
         <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}

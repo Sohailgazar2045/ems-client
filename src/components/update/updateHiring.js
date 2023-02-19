@@ -47,6 +47,11 @@ const UpDateHiring = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!update.jobID || !update.jobTitle || !update.jobDescription || !update.applicantName || !update.interviewDate || !update.interviewer || !update.interviewerFeedback || !update.offerSalary || !update.hireDate) {
+      alert("Please fill in all fields.");
+    }
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api//employeeHiring", update);
@@ -62,32 +67,32 @@ const UpDateHiring = () => {
   return (
     <div className="container">
       <form>
-        <label>JobID:</label>
+        <label>Job ID:</label>
         <input className="update" type="text" name="jobID" value={update.jobID} onChange={handleChange} />
 
-        <label>JobTitle:</label>
+        <label>Job Title:</label>
         <input className="update" type="text" name="jobTitle"  value={update.jobTitle} onChange={handleChange} />
 
-        <label>JobDescription:</label>
+        <label>Job Description:</label>
         <input className="update" type="text" name="jobDescription" value={update.jobDescription} onChange={handleChange} />
 
-        <label>applicantName:</label>
+        <label>ApplicantName:</label>
         <input className="update" type="text" name="applicantName" value={update.applicantName} onChange={handleChange} />
 
-        <label>interviewDate:</label>
-        <input className="update" type="text" name="interviewDate" value={update.interviewDate} onChange={handleChange} />
+        <label>InterviewDate:</label>
+        <input className="update" type="date" name="interviewDate" value={update.interviewDate} onChange={handleChange} />
 
-        <label>interviewer:</label>
+        <label>Interviewer:</label>
         <input className="update" type="text" name="interviewer" value={update.interviewer} onChange={handleChange} />
 
-        <label>interviewerFeedback:</label>
+        <label>interviewer Feedback:</label>
         <input className="update" type="text" name="interviewerFeedback" value={update.interviewerFeedback} onChange={handleChange} />
 
-        <label>offerSalary:</label>
+        <label>Offer Salary:</label>
         <input className="update" type="text" name="offerSalary" value={update.offerSalary} onChange={handleChange} />
         
-        <label>hireDate:</label>
-        <input className="update" type="text" name="hireDate" value={update.hireDate} onChange={handleChange} />
+        <label>Join Date:</label>
+        <input className="update" type="date" name="hireDate" value={update.hireDate} onChange={handleChange} />
 
         <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}

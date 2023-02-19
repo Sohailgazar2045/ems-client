@@ -44,6 +44,12 @@ const UpdatePayRoll = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!update.payPeriod || !update.salary || !update.taxas || !update.deductions || !update.totallDeductions || !update.totalEarning || !update.netPay) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employeepayroll", update);
@@ -59,25 +65,25 @@ const UpdatePayRoll = () => {
   return (
     <div className="container">
       <form>
-        <label>payPeriod:</label>
-        <input className="update" type="text" name="payPeriod" value={update.payPeriod} onChange={handleChange} />
+        <label>PayPer Months:</label>
+        <input className="update" type="number" name="payPeriod" value={update.payPeriod} onChange={handleChange} />
 
-        <label>salary:</label>
+        <label>Salary:</label>
         <input className="update" type="text" name="salary"  value={update.salary} onChange={handleChange} />
 
-        <label>taxas:</label>
+        <label>Taxas:</label>
         <input className="update" type="text" name="taxas" value={update.taxas} onChange={handleChange} />
 
-        <label>deductions:</label>
+        <label>Deductions:</label>
         <input className="update" type="text" name="deductions" value={update.deductions} onChange={handleChange} />
        
-        <label>totallDeductions:</label>
+        <label>TotallDeductions:</label>
         <input className="update" type="text" name="totallDeductions" value={update.totallDeductions} onChange={handleChange} />
        
-        <label>totalEarning:</label>
+        <label>TotalEarning:</label>
         <input className="update" type="text" name="totalEarning" value={update.totalEarning} onChange={handleChange} />
         
-        <label>netPay:</label>
+        <label>NetPay:</label>
         <input className="update" type="text" name="netPay" value={update.netPay} onChange={handleChange} />
         
         <button className="btn btn-primary" onClick={handleSubmit}>

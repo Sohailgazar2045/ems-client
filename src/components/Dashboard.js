@@ -3,6 +3,7 @@ import React from "react";
 // import UpdateForm from "./update/employeeDupdate.js";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
+
 import EmployeeDview from "./dataview/employeeDview.js";
 import EmployeeProview from "./dataview/employeeProview.js";
 import EmployeeAttendance from "./dataview/employeeAttendanceView.js";
@@ -10,16 +11,18 @@ import EmployeePayroll from "./dataview/employeePayrollView.js";
 import EmployeePerformance from "./dataview/employeePerformanceView.js";
 import EmployeeTraining from "./dataview/employeeTrainingView.js";
 import EmployeeHiringView from "./dataview/employeehiringView";
+import RoleView from "./dataview/manageRole";
 
 const Dashboard = () => {
   const [showEmployeeDirectory, setShowEmployeeDirectory] = useState(false);
   const [showEmployeeProfile, setShowEmployeeProfile] = useState(false);
-  const [showAttendanceManagement, setShowAttendanceManagement] =
-    useState(false);
+  const [showAttendanceManagement, setShowAttendanceManagement] = useState(false);
   const [showPayrollManagement, setSetPayrollManagement] = useState(false);
   const [showPerformance, setPerformance] = useState(false);
   const [showTraining, setTraining] = useState(false);
   const [showHiring, sethiring] = useState(false);
+  const [showRole, setshowRole] = useState(false);
+
 
   const handleEmployeeDirectoryClick = () => {
     setShowEmployeeDirectory(true);
@@ -29,6 +32,7 @@ const Dashboard = () => {
     setPerformance(false);
     setTraining(false);
     sethiring(false);
+    setshowRole(false)
   };
 
   const handleEmployeeProfileClick = () => {
@@ -39,6 +43,7 @@ const Dashboard = () => {
     setPerformance(false);
     setTraining(false);
     sethiring(false);
+    setshowRole(false)
   };
 
   const handleAttendanceManagementClick = () => {
@@ -49,6 +54,7 @@ const Dashboard = () => {
     setPerformance(false);
     setTraining(false);
     sethiring(false);
+    setshowRole(false)
   };
   const handlePayrollManagementClick = () => {
     setShowEmployeeDirectory(false);
@@ -58,6 +64,7 @@ const Dashboard = () => {
     setPerformance(false);
     setTraining(false);
     sethiring(false);
+    setshowRole(false)
   };
   const handlePerformanceManagementClick = () => {
     setShowEmployeeDirectory(false);
@@ -67,6 +74,7 @@ const Dashboard = () => {
     setPerformance(true);
     setTraining(false);
     sethiring(false);
+    setshowRole(false)
   };
   const handleemployeeTrainingClick = () => {
     setShowEmployeeDirectory(false);
@@ -76,6 +84,7 @@ const Dashboard = () => {
     setPerformance(false);
     setTraining(true);
     sethiring(false);
+    setshowRole(false)
   };
   const handleEmployeeHiringClick = () => {
     setShowEmployeeDirectory(false);
@@ -85,7 +94,19 @@ const Dashboard = () => {
     setPerformance(false);
     setTraining(false);
     sethiring(true);
+    setshowRole(false)
   };
+  const handleUserRoleClick = () => {
+    setShowEmployeeDirectory(false);
+    setShowEmployeeProfile(false);
+    setShowAttendanceManagement(false);
+    setSetPayrollManagement(false);
+    setPerformance(false);
+    setTraining(false);
+    sethiring(false);
+    setshowRole(true)
+  };
+
   return (
     <div className="container-fluid">
       <div className="row" >
@@ -114,31 +135,31 @@ const Dashboard = () => {
                 onClick={handleAttendanceManagementClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
               >
-                Attendance Management
+                Attendance
               </button>
               <button
                 onClick={handlePayrollManagementClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
               >
-                Payroll Management
+                Payroll
               </button>
               <button
                 onClick={handlePerformanceManagementClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
               >
-                Performance Management
+                Performance
               </button>
               <button
                 onClick={handleemployeeTrainingClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
               >
-                Training and Development
+                Training 
               </button>
               <button
                 onClick={handleEmployeeHiringClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
               >
-                Recuitment & Hiring
+                Hiring
               </button>
               <a
                 className="nav-link black-text btn btn-outline-light mt-5"
@@ -153,9 +174,11 @@ const Dashboard = () => {
         <div className="col-md-10">
           <div className="main-bar">
             <div class="row button-container d-flex">
-              <button class="btn col-1 btn-primary btn-sm mt-3">
-                Create Role
+              
+              <button onClick={handleUserRoleClick}  className="btn col-1 btn-primary btn-sm mt-3">
+                Roles
               </button>
+              
               <h1 className="heading col-10 text-center">
                 Employee Management System
               </h1>
@@ -278,13 +301,27 @@ const Dashboard = () => {
 
                 <Routes>
                   <Route
-                    path="/employee-Training"
+                    path="/employee-hiring"
                     element={<EmployeeHiringView />}
                   />
                 </Routes>
                 {showHiring ? (
                   <div>
                     <EmployeeHiringView />
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                <Routes>
+                  <Route
+                    path="/employee-createRole"
+                    element={<RoleView />}
+                  />
+                </Routes>
+                {showRole ? (
+                  <div>
+                    <RoleView />
                   </div>
                 ) : (
                   <div></div>

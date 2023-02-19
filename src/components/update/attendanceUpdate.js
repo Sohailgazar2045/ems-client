@@ -40,6 +40,12 @@ const UpdateAttendance = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!update.date || !update.checkInTime || !update.checkOutTime) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employeeattendance", update);
@@ -56,13 +62,13 @@ const UpdateAttendance = () => {
     <div className="container">
       <form>
         <label>Date:</label>
-        <input className="update" type="text" name="date" value={update.date} onChange={handleChange} />
+        <input className="update" type="date" name="date" value={update.date} onChange={handleChange} />
 
         <label>CheckInTime:</label>
-        <input className="update" type="text" name="checkInTime"  value={update.checkInTime} onChange={handleChange} />
+        <input className="update" type="time" name="checkInTime"  value={update.checkInTime} onChange={handleChange} />
 
         <label>CheckOutTime:</label>
-        <input className="update" type="text" name="checkOutTime" value={update.checkOutTime} onChange={handleChange} />
+        <input className="update" type="time" name="checkOutTime" value={update.checkOutTime} onChange={handleChange} />
 
         <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}

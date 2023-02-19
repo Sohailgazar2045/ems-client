@@ -9,7 +9,7 @@ const UpDateEmployee = () => {
   const [update, setUpdate] = useState({
     address: "",
     dataOfBirth: "",
-    emergencyContactInf: "",
+    emergencyContactInfo: "",
     personalEmail: "",
     personalPhoneNumber: ""
   });
@@ -42,6 +42,12 @@ const UpDateEmployee = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!update.address || !update.dataOfBirth || !update.emergencyContactInfo || !update.personalEmail || !update.personalPhoneNumber) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employee", update);
@@ -61,7 +67,7 @@ const UpDateEmployee = () => {
         <input className="update" type="text" name="address" value={update.address} onChange={handleChange} />
 
         <label>DataOfBirth:</label>
-        <input className="update" type="text" name="dataOfBirth"  value={update.dataOfBirth} onChange={handleChange} />
+        <input className="update" type="date" name="dataOfBirth"  value={update.dataOfBirth} onChange={handleChange} />
 
         <label>EmergencyContactInfo:</label>
         <input className="update" type="text" name="emergencyContactInfo" value={update.emergencyContactInfo} onChange={handleChange} />

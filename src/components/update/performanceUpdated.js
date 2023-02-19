@@ -46,6 +46,13 @@ const UpdatePerformance = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    
+  if (!update.evaluationPeriod || !update.manager || !update.goals || !update.objrctives || !update.jobDuties || !update.performanceRating || !update.feedBack) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employeeperformance", update);
@@ -61,25 +68,25 @@ const UpdatePerformance = () => {
   return (
     <div className="container">
       <form>
-        <label>evaluationPeriod:</label>
-        <input className="update" type="text" name="evaluationPeriod" value={update.evaluationPeriod} onChange={handleChange} />
+        <label>EvaluationPeriod in Month:</label>
+        <input className="update" type="number" name="evaluationPeriod" value={update.evaluationPeriod} onChange={handleChange} />
 
-        <label>manager:</label>
+        <label>Manager:</label>
         <input className="update" type="text" name="manager"  value={update.manager} onChange={handleChange} />
      
-        <label>goals:</label>
+        <label>Goals:</label>
         <input className="update" type="text" name="goals"  value={update.goals} onChange={handleChange} />
 
-        <label>objectives:</label>
+        <label>Objectives:</label>
         <input className="update" type="text" name="objrctives"  value={update.objrctives} onChange={handleChange} />
        
         <label>jobDuties:</label>
         <input className="update" type="text" name="jobDuties"  value={update.jobDuties} onChange={handleChange} />
 
-        <label>performanceRating:</label>
-        <input className="update" type="text" name="performanceRating"  value={update.performanceRating} onChange={handleChange} />
+        <label>PerformanceRating:</label>
+        <input className="update" type="range" min="0" max="5" name="performanceRating"  value={update.performanceRating} onChange={handleChange} />
 
-        <label>feedBack:</label>
+        <label>FeedBack:</label>
         <input className="update" type="text" name="feedBack" value={update.feedBack} onChange={handleChange} />
 
         <button className="btn btn-primary"onClick={handleSubmit}>

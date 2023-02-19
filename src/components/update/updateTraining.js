@@ -41,6 +41,11 @@ const UpdateTraining = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!update.trainingProgram || !update.startDate || !update.endDate || !update.skillAquired) {
+      alert("Please fill in all fields.");
+    }
+    
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employeeTraining", update);
@@ -60,10 +65,10 @@ const UpdateTraining = () => {
         <input className="update" type="text" name="trainingProgram" value={update.trainingProgram} onChange={handleChange} />
 
         <label>startDate:</label>
-        <input className="update" type="text" name="startDate" value={update.startDate} onChange={handleChange} />
+        <input className="update" type="date" name="startDate" value={update.startDate} onChange={handleChange} />
 
         <label>endDate:</label>
-        <input className="update" type="text" name="endDate"  value={update.endDate} onChange={handleChange} />
+        <input className="update" type="date" name="endDate"  value={update.endDate} onChange={handleChange} />
 
         <label>skillAquired:</label>
         <input className="update" type="text" name="skillAquired" value={update.skillAquired} onChange={handleChange} />
