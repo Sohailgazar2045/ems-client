@@ -70,10 +70,12 @@ const UpdateAttendance = () => {
         <label>CheckOutTime:</label>
         <input className="update" type="time" name="checkOutTime" value={update.checkOutTime} onChange={handleChange} />
 
-        <button className="btn btn-primary" onClick={handleSubmit}>
+      </form>
+      <div className="center">
+      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
-      </form>
+        </div>
     </div>
   );
 };

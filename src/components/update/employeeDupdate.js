@@ -82,10 +82,12 @@ const UpDateDirectory = () => {
         <label>Joinind Date:</label>
         <input className="update" type="date" name="dateOfHire" value={update.dateOfHire} onChange={handleChange} />
 
-        <button className="btn btn-primary" onClick={handleSubmit}>
+      </form>
+      <div className="center">
+      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
-      </form>
+        </div>
     </div>
   );
 };

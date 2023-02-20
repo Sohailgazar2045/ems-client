@@ -89,10 +89,12 @@ const UpdatePerformance = () => {
         <label>FeedBack:</label>
         <input className="update" type="text" name="feedBack" value={update.feedBack} onChange={handleChange} />
 
-        <button className="btn btn-primary"onClick={handleSubmit}>
+      </form>
+      <div className="center">
+      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
-      </form>
+        </div>
     </div>
   );
 };

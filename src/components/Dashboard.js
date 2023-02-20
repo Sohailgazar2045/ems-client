@@ -10,8 +10,8 @@ import EmployeeAttendance from "./dataview/employeeAttendanceView.js";
 import EmployeePayroll from "./dataview/employeePayrollView.js";
 import EmployeePerformance from "./dataview/employeePerformanceView.js";
 import EmployeeTraining from "./dataview/employeeTrainingView.js";
-import EmployeeHiringView from "./dataview/employeehiringView";
-import RoleView from "./dataview/manageRole";
+import EmployeeHiringView from "./dataview/employeehiringView.js";
+import RoleView from "./dataview/manageRole.js";
 
 const Dashboard = () => {
   const [showEmployeeDirectory, setShowEmployeeDirectory] = useState(false);

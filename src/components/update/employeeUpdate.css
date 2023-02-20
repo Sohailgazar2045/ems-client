@@ -38,3 +38,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0051a8; /* darker blue color */
 }
+.center {
+  display: flex;
+  justify-content: center;
+}

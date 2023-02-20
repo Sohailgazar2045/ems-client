@@ -94,10 +94,12 @@ const UpDateHiring = () => {
         <label>Join Date:</label>
         <input className="update" type="date" name="hireDate" value={update.hireDate} onChange={handleChange} />
 
-        <button className="btn btn-primary" onClick={handleSubmit}>
+      </form>
+      <div className="center">
+      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
-      </form>
+        </div>
     </div>
   );
 };

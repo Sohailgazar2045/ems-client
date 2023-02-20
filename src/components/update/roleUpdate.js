@@ -73,15 +73,18 @@ const UpdateUserRoll = () => {
 
         <label>role:</label>
         <select name="role" value={update.role} onChange={handleChange}>
-          <option value="employee">Employee</option>
+          <option value="select">Please Selecet A Role</option>
+          <option value="CEO">CEO</option>
           <option value="manager">Manager</option>
-          <option value="hr">HR</option>
+          <option value="HR">HR</option>
+          <option value="employee">Employee</option>
         </select>
-
-        <button className="btn btn-primary" onClick={handleSubmit}>
+      </form>
+      <div className="center">
+      <button className="btn btn-primary mt-3" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
-      </form>
+        </div>
     </div>
   );
 };

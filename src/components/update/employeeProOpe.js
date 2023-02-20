@@ -42,7 +42,7 @@ const UpDateEmployee = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     if (!update.address || !update.dataOfBirth || !update.emergencyContactInfo || !update.personalEmail || !update.personalPhoneNumber) {
       alert("Please fill in all fields.");
       return;
@@ -67,7 +67,7 @@ const UpDateEmployee = () => {
         <input className="update" type="text" name="address" value={update.address} onChange={handleChange} />
 
         <label>DataOfBirth:</label>
-        <input className="update" type="date" name="dataOfBirth"  value={update.dataOfBirth} onChange={handleChange} />
+        <input className="update" type="text" name="dataOfBirth"  value={update.dataOfBirth} onChange={handleChange} />
 
         <label>EmergencyContactInfo:</label>
         <input className="update" type="text" name="emergencyContactInfo" value={update.emergencyContactInfo} onChange={handleChange} />
@@ -78,11 +78,12 @@ const UpDateEmployee = () => {
         <label>PersonalPhoneNumber:</label>
         <input className="update" type="text" name="personalPhoneNumber" value={update.personalPhoneNumber} onChange={handleChange} />
 
-
-        <button className="btn btn-primary " onClick={handleSubmit}>
+      </form>
+      <div className="center">
+      <button className="btn btn-primary" onClick={handleSubmit}>
           {id === "new" ? "Add New" : "Update"}
         </button>
-      </form>
+        </div>
     </div>
   );
 };

@@ -33,7 +33,6 @@ const RoleView = () => {
               <tr>
                 <th>userName</th>
                 <th>email</th>
-                <th>password</th>
                 <th>role</th>
                 <th>Delete</th>
                 <th>Update</th>
@@ -44,7 +43,6 @@ const RoleView = () => {
                 <tr key={userRole._id}>
                   <td>{userRole.userName}</td>
                   <td>{userRole.email}</td>
-                  <td>{userRole.password}</td>
                   <td>{userRole.role}</td>
                <td> <button onClick={() => handleDelete(userRole)} className="button-delete">Delete</button> </td>
                <td> <button onClick={()=>navigate(`/dashboard/createRole/${userRole._id}`)} className="button-update">Update</button> </td>
