@@ -19,10 +19,17 @@ import RoleView from './components/dataview/manageRole';
 import UpdateUserRoll from './components/update/roleUpdate';
 import { Routes , Route } from 'react-router-dom';
 function App() {
+  // const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  console.log("userRole:", role);
   return (
       <Routes>
       <Route path='/' element={<Login/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
+      {/* <Route path='/dashboard' element={<Dashboard token={token} role={role} />} /> */}
+      <Route path='/dashboard' element={<Dashboard userRole={role} />}/>
+      <Route path='/dashboard/*' element={<Dashboard/>}/>
+
+      {/* <Route path='/dashboard' element={<Dashboard/>}/> */}
       <Route path='/dashboard/employeedview' element={<EmployeeDview/>}/>
       <Route path='/dashboard/employeedview/:id' element={<UpDateDirectory/>}/>
 

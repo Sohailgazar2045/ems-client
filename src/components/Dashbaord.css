@@ -20,18 +20,26 @@
     text-align: center;
   }
   .box-1 {
+    height: 100px;
+    margin-bottom: 20px;
     background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
   
   .box-2 {
+    height: 100px;
+    margin-bottom: 20px;
     background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
   
   .box-3 {
+    height: 100px;
+    margin-bottom: 20px;
     background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
   
   .box-4 {
+    height: 100px;
+  margin-bottom: 20px;
     background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
   }
  

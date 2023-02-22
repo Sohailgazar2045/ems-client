@@ -29,8 +29,9 @@ const EmployeePayroll = () => {
   return (
      <>
     <button onClick={()=>navigate("/dashboard/payRoll/new")} className="button-insert mt-3">Add New</button>
+        <div style={{ height: "350px", overflow: "auto" }}>
           <table>
-            <thead>
+            <thead style={{position: "sticky"  , top: "0"}}>
               <tr>
                 <th>payPeriod</th>
                 <th>salary</th>
@@ -61,6 +62,7 @@ const EmployeePayroll = () => {
               ))}
             </tbody>
           </table>
+          </div>
           </>
   );
 };

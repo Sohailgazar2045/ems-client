@@ -27,8 +27,9 @@ const EmployeeHiringView = () => {
   return (
     <>
     <button onClick={()=>navigate("/dashboard/hiring/new")} className="button-insert mt-3">Add New</button>
+         <div style={{ height: "350px", overflow: "auto" }}>
           <table>
-            <thead>
+            <thead style={{position: "sticky"  , top: "0"}}>
               <tr>
                 <th>JobID</th>
                 <th>JobTitle</th>
@@ -66,6 +67,7 @@ const EmployeeHiringView = () => {
               ))}
             </tbody>
           </table>
+          </div>
           </>
   );
 };

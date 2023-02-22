@@ -39,8 +39,9 @@ const EmployeePerformance = () => {
       >
         Add New
       </button>
+      <div style={{ height: "350px", overflow: "auto" }}>
       <table>
-        <thead>
+        <thead style={{position: "sticky"  , top: "0"}}>
           <tr>
             <th>EvaluationPeriod</th>
             <th>Manager</th>
@@ -89,6 +90,7 @@ const EmployeePerformance = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </>
   );
 };

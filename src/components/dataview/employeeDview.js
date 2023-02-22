@@ -44,9 +44,9 @@ const EmployeeDview = () => {
     <div >
        <button onClick={()=>navigate("/dashboard/employeedview/new")} className="button-insert mt-3">Add New</button>
       </div>
-      <div>
+      <div style={{ height: "350px", overflow: "auto" }}>
     <table>
-      <thead>
+      <thead style={{position: "sticky"  , top: "0"}}>
         <tr>
           <th>FirstName</th>
           <th>LastName</th>

@@ -28,8 +28,9 @@ const EmployeeTraining = () => {
   return (
     <>
     <button onClick={()=>navigate("/dashboard/training/new")} className="button-insert mt-3">Add New</button>
+         <div style={{ height: "350px", overflow: "auto" }}>
           <table>
-            <thead>
+            <thead style={{position: "sticky"  , top: "0"}}>
               <tr>
                 <th>TrainingProgram</th>
                 <th>StartDate</th>
@@ -52,6 +53,7 @@ const EmployeeTraining = () => {
               ))}
             </tbody>
           </table>
+          </div>
           </>
   );
 };

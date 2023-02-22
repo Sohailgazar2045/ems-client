@@ -12,8 +12,11 @@ import EmployeePerformance from "./dataview/employeePerformanceView.js";
 import EmployeeTraining from "./dataview/employeeTrainingView.js";
 import EmployeeHiringView from "./dataview/employeehiringView.js";
 import RoleView from "./dataview/manageRole.js";
+import DateTime from "./timeDate";
+import DateToday from "./dateToday";
 
 const Dashboard = () => {
+  const userRole = localStorage.getItem("role");
   const [showEmployeeDirectory, setShowEmployeeDirectory] = useState(false);
   const [showEmployeeProfile, setShowEmployeeProfile] = useState(false);
   const [showAttendanceManagement, setShowAttendanceManagement] = useState(false);
@@ -24,6 +27,7 @@ const Dashboard = () => {
   const [showRole, setshowRole] = useState(false);
 
 
+  
   const handleEmployeeDirectoryClick = () => {
     setShowEmployeeDirectory(true);
     setShowEmployeeProfile(false);
@@ -111,7 +115,7 @@ const Dashboard = () => {
     <div className="container-fluid">
       <div className="row" >
         {/* <!-- Sidebar navigation --> */}
-        <div className="col-md-2  custom-bg">
+        <div className=" col-md-2  custom-bg">
           <h2 className="heading mt-2 text-white">Dashboard</h2>
           <br></br>
           <div className="sidebar-search">
@@ -119,12 +123,17 @@ const Dashboard = () => {
           </div>
           <div className="sidebar mt-4">
             <nav className="nav flex-column">
+              
+            {userRole  === 'CEO' && (
+                 <>
+
               <button
                 onClick={handleEmployeeDirectoryClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
               >
                 Employee Directory
               </button>
+              
               <button
                 onClick={handleEmployeeProfileClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
@@ -137,6 +146,8 @@ const Dashboard = () => {
               >
                 Attendance
               </button>
+
+         
               <button
                 onClick={handlePayrollManagementClick}
                 className="nav-link black-text btn btn-outline-light mt-2"
@@ -161,23 +172,147 @@ const Dashboard = () => {
               >
                 Hiring
               </button>
+             
+
+              <button onClick={handleUserRoleClick}  className="nav-link black-text btn btn-outline-light mt-2">
+                Roles
+              </button>
+                   </>
+        )}
+
+{userRole  === 'HR' && (
+                 <>
+
+              <button
+                onClick={handleEmployeeDirectoryClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Employee Directory
+              </button>
+              
+              <button
+                onClick={handleEmployeeProfileClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Employee Profile
+              </button>
+              <button
+                onClick={handleAttendanceManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Attendance
+              </button>
+
+         
+              <button
+                onClick={handlePayrollManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Payroll
+              </button>
+              <button
+                onClick={handlePerformanceManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Performance
+              </button>
+              <button
+                onClick={handleemployeeTrainingClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Training 
+              </button>
+              <button
+                onClick={handleEmployeeHiringClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Hiring
+              </button>
+             
+                   </>
+        )}
+
+{userRole  === 'manager' && (
+                 <>
+
+              <button
+                onClick={handleEmployeeDirectoryClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Employee Directory
+              </button>
+              
+              <button
+                onClick={handleEmployeeProfileClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Employee Profile
+              </button>
+              <button
+                onClick={handleAttendanceManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Attendance
+              </button>
+              <button
+                onClick={handlePerformanceManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Performance
+              </button>
+               </>
+        )}
+
+{userRole  === 'employee' && (
+                 <>
+
+              
+              <button
+                onClick={handleEmployeeProfileClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Employee Profile
+              </button>
+              <button
+                onClick={handleAttendanceManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Attendance
+              </button>
+
+         
+              <button
+                onClick={handlePayrollManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Payroll
+              </button>
+              <button
+                onClick={handlePerformanceManagementClick}
+                className="nav-link black-text btn btn-outline-light mt-2"
+              >
+                Performance
+              </button>
+             
+                   </>
+        )}
+
               <a
-                className="nav-link black-text btn btn-outline-light mt-5"
+                className="nav-link black-text btn btn-outline-light mt-4"
                 href="/"
+                style={{ position: "absolute", bottom: 0 }}
               >
                 Logout
               </a>
+              
             </nav>
           </div>
         </div>
+        
 
         <div className="col-md-10">
           <div className="main-bar">
             <div class="row button-container d-flex">
-              
-              <button onClick={handleUserRoleClick}  className="btn col-1 btn-primary btn-sm mt-3">
-                Roles
-              </button>
               
               <h1 className="heading col-10 text-center">
                 Employee Management System
@@ -189,24 +324,24 @@ const Dashboard = () => {
             <div className="col-md-3">
               <div className="card custom-card box-1 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title text-white">Box 4</h5>
-                  <p className="card-text text-white">Content goes here</p>
+                  <h5 className="card-title text-white">Welcome</h5>
+                  <p className="card-text text-white">{userRole}</p>
                 </div>
               </div>
             </div>
             <div className="col-md-3">
               <div className="card custom-card box-2 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title text-white">Box 4</h5>
-                  <p className="card-text text-white">Content goes here</p>
+                  <h5 className="card-title text-white">Time</h5>
+                  <p className="card-text text-white"><DateTime></DateTime></p>
                 </div>
               </div>
             </div>
             <div className="col-md-3">
               <div className="card custom-card box-3 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title text-white">Box 4</h5>
-                  <p className="card-text text-white">Content goes here</p>
+                  <h5 className="card-title text-white">Date</h5>
+                  <p className="card-text text-white"><DateToday></DateToday></p>
                 </div>
               </div>
             </div>

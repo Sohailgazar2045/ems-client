@@ -27,9 +27,9 @@ const EmployeeProfile = () => {
 
   return (
     <>
-      <button onClick={()=>navigate("/dashboard/employee/new")} className="button-insert mt-3">Add new</button>
+      <button onClick={()=>navigate("/dashboard/employee/new")} className="button-insert mt-3">Add New</button>
       <table>
-        <thead>
+        <thead style={{position: "sticky"  , top: "0"}}>
           <tr>
             <th>address</th>
             <th>dataOfBirth</th>

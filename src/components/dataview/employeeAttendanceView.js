@@ -27,9 +27,10 @@ const EmployeeAttendance = () => {
 
   return (
     <>
-      <button onClick={()=>navigate("/dashboard/attendance/new")} className="button-insert mt-3">Add new</button>
+      <button onClick={()=>navigate("/dashboard/attendance/new")} className="button-insert mt-3">Add New</button>
+      <div style={{ height: "350px", overflow: "auto" }}>
       <table>
-        <thead>
+        <thead style={{position: "sticky"  , top: "0"}}>
           <tr>
             <th>Date</th>
             <th>CheckInTime</th>
@@ -50,7 +51,7 @@ const EmployeeAttendance = () => {
                 </button>
               </td>
               <td>
-                <button onClick={()=>navigate(`/dashboard/attendance/${employeeAt._id}`)} className="button-update">
+                <button  onClick={()=>navigate(`/dashboard/attendance/${employeeAt._id}`)} className="button-update">
                   Update
                 </button>
               </td>
@@ -58,6 +59,7 @@ const EmployeeAttendance = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </>
   );
 };

@@ -28,8 +28,10 @@ const RoleView = () => {
   return (
     <>
     <button onClick={()=>navigate("/dashboard/createRole/new")} className="button-insert mt-3">Add New</button>
+         
+         <div style={{ height: "350px", overflow: "auto" }}>
           <table>
-            <thead>
+            <thead style={{position: "sticky"  , top: "0"}}>
               <tr>
                 <th>userName</th>
                 <th>email</th>
@@ -50,6 +52,7 @@ const RoleView = () => {
               ))}
             </tbody>
           </table>
+          </div>
           </>
   );
 };
