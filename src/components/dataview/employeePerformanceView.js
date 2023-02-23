@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./employeeDview.css";
 
 const EmployeePerformance = () => {
+  const userRole = localStorage.getItem("role");
   const [employeePerformance, setEmployeePerformance] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -17,7 +18,7 @@ const EmployeePerformance = () => {
 
   const handleDelete = async (employee) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete`);
-    if (confirmDelete){
+    if (confirmDelete && (userRole === 'CEO' || userRole === 'HR' || userRole === 'manager')){
     try {
       await axios.delete(
         `http://localhost:5000/api/employeeperformance/${employee._id}`
@@ -33,12 +34,16 @@ const EmployeePerformance = () => {
 
   return (
     <>
+    {userRole === 'CEO' || userRole === 'HR' || userRole === 'manager'?
       <button
         onClick={() => navigate("/dashboard/performance/new")}
         className="button-insert mt-3"
       >
         Add New
       </button>
+
+: null
+}
       <div style={{ height: "350px", overflow: "auto" }}>
       <table>
         <thead style={{position: "sticky"  , top: "0"}}>
@@ -50,8 +55,13 @@ const EmployeePerformance = () => {
             <th>jobDuties</th>
             <th>performanceRating</th>
             <th>feedBack</th>
-            <th>Delete</th>
-            <th>Update</th>
+            {userRole === 'CEO' || userRole === 'HR' || userRole === 'manager' ?
+                <>
+                  <th>Delete</th>
+                  <th>Update</th>
+                </>
+                : null
+              }
           </tr>
         </thead>
         <tbody>
@@ -64,6 +74,9 @@ const EmployeePerformance = () => {
               <td>{employeePerform.jobDuties}</td>
               <td>{employeePerform.performanceRating}</td>
               <td>{employeePerform.feedBack}</td>
+             
+              {userRole === 'CEO' || userRole === 'HR'||userRole === 'manager'?
+                <>
               <td>
                 {" "}
                 <button
@@ -86,6 +99,9 @@ const EmployeePerformance = () => {
                   Update
                 </button>{" "}
               </td>
+               </>
+                : null
+              }
             </tr>
           ))}
         </tbody>

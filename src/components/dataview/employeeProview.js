@@ -4,6 +4,7 @@ import './employeeDview.css';
 import { useNavigate } from "react-router-dom";
 
 const EmployeeProfile = () => {
+  const userRole = localStorage.getItem("role");
   const [employeeAttendance, setemployeeProfile] = useState([]);
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const EmployeeProfile = () => {
 
   const handleDelete = async (employee) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete`);
-    if (confirmDelete){
+    if (confirmDelete && (userRole === 'CEO' || userRole === 'HR')){
     try {
       await axios.delete(`http://localhost:5000/api/employee/${employee._id}`);
       setemployeeProfile((prevEmployees) => prevEmployees.filter((emp) => emp._id !== employee._id));
@@ -27,8 +28,11 @@ const EmployeeProfile = () => {
 
   return (
     <>
+    {userRole === 'CEO' || userRole === 'HR' ?
       <button onClick={()=>navigate("/dashboard/employee/new")} className="button-insert mt-3">Add New</button>
-      <table>
+      : null
+    }
+    <table>
         <thead style={{position: "sticky"  , top: "0"}}>
           <tr>
             <th>address</th>
@@ -36,8 +40,13 @@ const EmployeeProfile = () => {
             <th>emergencyContactInfo</th>
             <th>personalEmail</th>
             <th>personalPhoneNumber</th>
-            <th>Delete</th>
-            <th>Update</th>
+            {userRole === 'CEO' || userRole === 'HR' ?
+                <>
+                  <th>Delete</th>
+                  <th>Update</th>
+                </>
+                : null
+              }
           </tr>
         </thead>
         <tbody>
@@ -48,6 +57,9 @@ const EmployeeProfile = () => {
               <td>{employee.emergencyContactInfo}</td>
               <td>{employee.personalEmail}</td>
               <td>{employee.personalPhoneNumber}</td>
+              
+              {userRole === 'CEO' || userRole === 'HR' ?
+                <>
               <td>
                 <button onClick={() => handleDelete(employee)} className="button-delete">
                   Delete
@@ -58,6 +70,9 @@ const EmployeeProfile = () => {
                   Update
                 </button>
               </td>
+              </>
+                : null
+              }
             </tr>
           ))}
         </tbody>

@@ -1,5 +1,5 @@
 .custom-bg{
-  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+  background-color: #0d8af0;
     height: 100vh;
   }
   .heading {
@@ -22,25 +22,25 @@
   .box-1 {
     height: 100px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    background-color: #00D284;
   }
   
   .box-2 {
     height: 100px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    background-color: #0dcaf0;
   }
   
   .box-3 {
     height: 100px;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    background-color: #5E6EED;
   }
   
   .box-4 {
     height: 100px;
   margin-bottom: 20px;
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+  background-color: #FF0854;
   }
  
   .button-container {

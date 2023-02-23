@@ -4,6 +4,7 @@ import './employeeDview.css';
 import { useNavigate } from "react-router-dom";
 
 const EmployeeTraining = () => {
+  const userRole = localStorage.getItem("role");
   const [employeeTraining, setEmployeetraining] = useState([]);
   const navigate = useNavigate();
   
@@ -27,8 +28,11 @@ const EmployeeTraining = () => {
 
   return (
     <>
+    {userRole === 'CEO' || userRole === 'HR' ?
     <button onClick={()=>navigate("/dashboard/training/new")} className="button-insert mt-3">Add New</button>
-         <div style={{ height: "350px", overflow: "auto" }}>
+    : null
+  }
+        <div style={{ height: "350px", overflow: "auto" }}>
           <table>
             <thead style={{position: "sticky"  , top: "0"}}>
               <tr>
@@ -36,8 +40,13 @@ const EmployeeTraining = () => {
                 <th>StartDate</th>
                 <th>EndDate</th>
                 <th>SkillAquired</th>
-                <th>Delete</th>
-                <th>Update</th>
+                {userRole === 'CEO' || userRole === 'HR' ?
+                <>
+                  <th>Delete</th>
+                  <th>Update</th>
+                </>
+                : null
+              }
               </tr>
             </thead>
             <tbody>

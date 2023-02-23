@@ -7,7 +7,7 @@ const UpdateAttendance = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [update, setUpdate] = useState({
-    date: "",
+    date: new Date().toISOString().substring(0, 10),
     checkInTime: "",
     checkOutTime: "",
   });

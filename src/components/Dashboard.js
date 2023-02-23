@@ -14,6 +14,7 @@ import EmployeeHiringView from "./dataview/employeehiringView.js";
 import RoleView from "./dataview/manageRole.js";
 import DateTime from "./timeDate";
 import DateToday from "./dateToday";
+import DayOfWeek from "./day";
 
 const Dashboard = () => {
   const userRole = localStorage.getItem("role");
@@ -348,8 +349,8 @@ const Dashboard = () => {
             <div className="col-md-3">
               <div className="card custom-card box-4 mt-3">
                 <div className="card-body">
-                  <h5 className="card-title text-white">Box 4</h5>
-                  <p className="card-text text-white">Content goes here</p>
+                  <h5 className="card-title text-white"><DayOfWeek></DayOfWeek></h5>
+                  {/* <p className="card-text text-white">Content goes here</p> */}
                 </div>
               </div>
             </div>

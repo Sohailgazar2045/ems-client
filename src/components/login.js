@@ -11,7 +11,7 @@ const Login = () => {
     event.preventDefault();
     axios.post('http://localhost:5000/api/login', { email, password })
       .then((res) => {
-        const { token , role } = res.data;
+        const { token , role} = res.data;
         console.log(res.data);
         localStorage.setItem("token", token);
         if (role) {

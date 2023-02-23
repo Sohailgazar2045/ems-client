@@ -60,6 +60,12 @@ const UpDateDirectory = () => {
       console.log(error);
     }
   };
+  const handleNumericInput = (ev) => {
+    const allowedKeys = ['Backspace', 'Delete', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    if (!allowedKeys.includes(ev.key)) {
+      ev.preventDefault();
+    }
+  }
 
   return (
     <div className="container">
@@ -77,7 +83,8 @@ const UpDateDirectory = () => {
         <input className="update" type="text" name="department" value={update.department} onChange={handleChange} />
 
         <label>Contact Information:</label>
-        <input className="update" type="text" name="contactInformation" value={update.contactInformation} onChange={handleChange} />
+        <input className="update" type="text" name="contactInformation" maxLength="11" value={update.contactInformation} onChange={handleChange} 
+        onKeyDown={handleNumericInput}/>
 
         <label>Joinind Date:</label>
         <input className="update" type="date" name="dateOfHire" value={update.dateOfHire} onChange={handleChange} />

@@ -46,6 +46,10 @@ const UpdateUserRoll = () => {
       alert("Please fill in all fields.");
       return;
     }
+    if (!/\S+@\S+\.\S+/.test(update.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
 
     try {
       if (id === "new") {
@@ -59,17 +63,20 @@ const UpdateUserRoll = () => {
     }
   };
 
+
+  
+
   return (
     <div className="container">
       <form>
         <label>User Name:</label>
-        <input className="update" type="text" name="userName" value={update.userName} onChange={handleChange} />
+        <input className="update" type="text" name="userName" value={update.userName} minLength={3} maxLength={30} onChange={handleChange} />
 
         <label>Email:</label>
-        <input className="update" type="text" name="email" value={update.email} onChange={handleChange} />
+        <input className="update" type="email" name="email"  value={update.email} onChange={handleChange} />
 
         <label>Password:</label>
-        <input className="update" type="text" name="password" value={update.password} onChange={handleChange} />
+        <input className="update" type="pasword" name="password" minLength={8}  value={update.password} onChange={handleChange} />
 
         <label>role:</label>
         <select name="role" value={update.role} onChange={handleChange}>

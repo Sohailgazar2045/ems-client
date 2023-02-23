@@ -47,6 +47,10 @@ const UpDateEmployee = () => {
       alert("Please fill in all fields.");
       return;
     }
+    if (!/\S+@\S+\.\S+/.test(update.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
 
     try {
       if (id === "new") {
@@ -60,6 +64,13 @@ const UpDateEmployee = () => {
     }
   };
 
+  const handleNumericInput = (ev) => {
+    const allowedKeys = ['Backspace', 'Delete', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    if (!allowedKeys.includes(ev.key)) {
+      ev.preventDefault();
+    }
+  }
+
   return (
     <div className="container">
       <form>
@@ -67,16 +78,18 @@ const UpDateEmployee = () => {
         <input className="update" type="text" name="address" value={update.address} onChange={handleChange} />
 
         <label>DataOfBirth:</label>
-        <input className="update" type="text" name="dataOfBirth"  value={update.dataOfBirth} onChange={handleChange} />
+        <input className="update" type="date" name="dataOfBirth"  value={update.dataOfBirth} onChange={handleChange} />
 
         <label>EmergencyContactInfo:</label>
-        <input className="update" type="text" name="emergencyContactInfo" value={update.emergencyContactInfo} onChange={handleChange} />
+        <input className="update" type="text" maxLength="11" name="emergencyContactInfo" value={update.emergencyContactInfo} onChange={handleChange} 
+         onKeyDown={handleNumericInput}/>
 
         <label>PersonalEmail:</label>
-        <input className="update" type="text" name="personalEmail" value={update.personalEmail} onChange={handleChange} />
+        <input className="update" type="email" name="personalEmail"  value={update.personalEmail} onChange={handleChange}  />
 
         <label>PersonalPhoneNumber:</label>
-        <input className="update" type="text" name="personalPhoneNumber" value={update.personalPhoneNumber} onChange={handleChange} />
+        <input className="update" type="text" maxLength="11" name="personalPhoneNumber" value={update.personalPhoneNumber} onChange={handleChange}
+        onKeyDown={handleNumericInput}/>
 
       </form>
       <div className="center">

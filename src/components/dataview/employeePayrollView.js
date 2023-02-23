@@ -4,6 +4,7 @@ import './employeeDview.css';
 import { useNavigate } from "react-router-dom";
 
 const EmployeePayroll = () => {
+  const userRole = localStorage.getItem("role");
   const [employeePayroll, setEmployeePayroll] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,7 +16,7 @@ const EmployeePayroll = () => {
 
   const handleDelete = async (employee) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete`);
-    if (confirmDelete){
+    if (confirmDelete && (userRole === 'CEO' || userRole === 'HR')){
     try {
       await axios.delete(`http://localhost:5000/api/employeepayroll/${employee._id}`);
       setEmployeePayroll((prevEmployees) => prevEmployees.filter((emp) => emp._id !== employee._id));
@@ -28,8 +29,11 @@ const EmployeePayroll = () => {
 
   return (
      <>
+     {userRole === 'CEO' || userRole === 'HR' ?
     <button onClick={()=>navigate("/dashboard/payRoll/new")} className="button-insert mt-3">Add New</button>
-        <div style={{ height: "350px", overflow: "auto" }}>
+    : null
+  }
+       <div style={{ height: "350px", overflow: "auto" }}>
           <table>
             <thead style={{position: "sticky"  , top: "0"}}>
               <tr>
@@ -40,8 +44,13 @@ const EmployeePayroll = () => {
                 <th>totallDeductions</th>
                 <th>totalEarning</th>
                 <th>netPay</th>
-                <th>Delete</th>
-                <th>Update</th>
+                {userRole === 'CEO' || userRole === 'HR' ?
+                <>
+                  <th>Delete</th>
+                  <th>Update</th>
+                </>
+                : null
+              }
               </tr>
             </thead>
             <tbody>
@@ -54,10 +63,13 @@ const EmployeePayroll = () => {
                   <td>{employeePayroll.totallDeductions}</td>
                   <td>{employeePayroll.totalEarning}</td>
                   <td>{employeePayroll.netPay}</td>
-               
+                  {userRole === 'CEO' || userRole === 'HR' ?
+                <>
                <td> <button onClick={() => handleDelete(employeePayroll)} className="button-delete">Delete</button> </td>
                <td> <button onClick={()=>navigate(`/dashboard/payRoll/${employeePayroll._id}`)} className="button-update">Update</button> </td>
-             
+               </>
+                : null
+              }
                 </tr>
               ))}
             </tbody>

@@ -4,6 +4,7 @@ import './employeeDview.css';
 import { useNavigate } from "react-router-dom";
 
 const EmployeeAttendance = () => {
+  const userRole = localStorage.getItem("role");
   const [employeeAttendance, setemployeeAttendance] = useState([]);
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const EmployeeAttendance = () => {
 
   const handleDelete = async (employee) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete`);
-    if (confirmDelete){
+    if (confirmDelete&& (userRole === 'CEO' || userRole === 'HR')){
     try {
       await axios.delete(`http://localhost:5000/api/employeeattendance/${employee._id}`);
       setemployeeAttendance((prevEmployees) => prevEmployees.filter((emp) => emp._id !== employee._id));
@@ -27,16 +28,25 @@ const EmployeeAttendance = () => {
 
   return (
     <>
+    {userRole === 'CEO' || userRole === 'HR' || userRole === 'employee' || userRole === 'manager'?
       <button onClick={()=>navigate("/dashboard/attendance/new")} className="button-insert mt-3">Add New</button>
-      <div style={{ height: "350px", overflow: "auto" }}>
+      : null
+    }
+     
+     <div style={{ height: "350px", overflow: "auto" }}>
       <table>
         <thead style={{position: "sticky"  , top: "0"}}>
           <tr>
             <th>Date</th>
             <th>CheckInTime</th>
             <th>CheckOutTime</th>
-            <th>Delete</th>
-            <th>Update</th>
+            {userRole === 'CEO' || userRole === 'HR' ?
+                <>
+                  <th>Delete</th>
+                  <th>Update</th>
+                </>
+                : null
+              }
           </tr>
         </thead>
         <tbody>
@@ -45,6 +55,9 @@ const EmployeeAttendance = () => {
               <td>{employeeAt.date}</td>
               <td>{employeeAt.checkInTime}</td>
               <td>{employeeAt.checkOutTime}</td>
+              
+              {userRole === 'CEO' || userRole === 'HR' ?
+                <>
               <td>
                 <button onClick={() => handleDelete(employeeAt)} className="button-delete">
                   Delete
@@ -55,6 +68,9 @@ const EmployeeAttendance = () => {
                   Update
                 </button>
               </td>
+              </>
+                : null
+              }
             </tr>
           ))}
         </tbody>

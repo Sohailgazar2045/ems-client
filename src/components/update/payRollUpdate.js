@@ -41,6 +41,23 @@ const UpdatePayRoll = () => {
     updateClone[e.target.name] = e.target.value;
     setUpdate(updateClone);
   };
+  const calculateFields = () => {
+    const salary = parseFloat(update.salary);
+    const taxas = salary * 0.1;
+    const deductions = salary * 0.05;
+    const totallDeductions = taxas + deductions;
+    const totalEarning = salary - totallDeductions;
+    const netPay = totalEarning / parseFloat(update.payPeriod);
+
+    setUpdate((prevState) => ({
+      ...prevState,
+      taxas: taxas.toFixed(2),
+      deductions: deductions.toFixed(2),
+      totallDeductions: totallDeductions.toFixed(2),
+      totalEarning: totalEarning.toFixed(2),
+      netPay: netPay.toFixed(2)
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,26 +82,26 @@ const UpdatePayRoll = () => {
   return (
     <div className="container">
       <form>
-        <label>PayPer Months:</label>
-        <input className="update" type="number" name="payPeriod" value={update.payPeriod} onChange={handleChange} />
+        <label>PayPeriod Months:</label>
+        <input className="update" type="number" name="payPeriod" value={update.payPeriod} onChange={handleChange} onBlur={calculateFields} />
 
         <label>Salary:</label>
-        <input className="update" type="text" name="salary"  value={update.salary} onChange={handleChange} />
+        <input className="update" type="text" name="salary"  value={update.salary} onChange={handleChange} onBlur={calculateFields} />
 
         <label>Taxas:</label>
-        <input className="update" type="text" name="taxas" value={update.taxas} onChange={handleChange} />
+        <input className="update" type="text" name="taxas" value={update.taxas} onChange={handleChange} onBlur={calculateFields} disabled />
 
         <label>Deductions:</label>
-        <input className="update" type="text" name="deductions" value={update.deductions} onChange={handleChange} />
+        <input className="update" type="text" name="deductions" value={update.deductions} onChange={handleChange} onBlur={calculateFields}  disabled/>
        
         <label>TotallDeductions:</label>
-        <input className="update" type="text" name="totallDeductions" value={update.totallDeductions} onChange={handleChange} />
+        <input className="update" type="text" name="totallDeductions" value={update.totallDeductions} onChange={handleChange} onBlur={calculateFields} disabled/>
        
         <label>TotalEarning:</label>
-        <input className="update" type="text" name="totalEarning" value={update.totalEarning} onChange={handleChange} />
+        <input className="update" type="text" name="totalEarning" value={update.totalEarning} onChange={handleChange} onBlur={calculateFields} disabled />
         
         <label>NetPay:</label>
-        <input className="update" type="text" name="netPay" value={update.netPay} onChange={handleChange} />
+        <input className="update" type="text" name="netPay" value={update.netPay} onChange={handleChange} onBlur={calculateFields} disabled />
         
       </form>
       <div className="center">
