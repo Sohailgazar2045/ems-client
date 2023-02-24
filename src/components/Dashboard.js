@@ -118,10 +118,9 @@ const Dashboard = () => {
         {/* <!-- Sidebar navigation --> */}
         <div className=" col-md-2  custom-bg">
           <h2 className="heading mt-2 text-white">Dashboard</h2>
-          <br></br>
-          <div className="sidebar-search">
+          {/* <div className="sidebar-search">
             <input type="text" className="form-control" placeholder="Search" />
-          </div>
+          </div> */}
           <div className="sidebar mt-4">
             <nav className="nav flex-column">
               

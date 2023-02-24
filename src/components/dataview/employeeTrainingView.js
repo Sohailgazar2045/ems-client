@@ -29,7 +29,7 @@ const EmployeeTraining = () => {
   return (
     <>
     {userRole === 'CEO' || userRole === 'HR' ?
-    <button onClick={()=>navigate("/dashboard/training/new")} className="button-insert mt-3">Add New</button>
+    <button onClick={()=>navigate("/dashboard/training/new")} className="btn btn-primary mt-3">Add New</button>
     : null
   }
         <div style={{ height: "350px", overflow: "auto" }}>
@@ -56,8 +56,8 @@ const EmployeeTraining = () => {
                   <td>{employeetraining.startDate}</td>
                   <td>{employeetraining.endDate}</td>
                   <td>{employeetraining.skillAquired}</td>
-               <td> <button onClick={() => handleDelete(employeetraining)} className="button-delete">Delete</button> </td>
-               <td> <button onClick={()=>navigate(`/dashboard/training/${employeetraining._id}`)} className="button-update">Update</button> </td>
+               <td> <button onClick={() => handleDelete(employeetraining)} className="btn btn-danger">Delete</button> </td>
+               <td> <button onClick={()=>navigate(`/dashboard/training/${employeetraining._id}`)} className="btn btn-warning">Update</button> </td>
                 </tr>
               ))}
             </tbody>

@@ -30,7 +30,7 @@ const EmployeePayroll = () => {
   return (
      <>
      {userRole === 'CEO' || userRole === 'HR' ?
-    <button onClick={()=>navigate("/dashboard/payRoll/new")} className="button-insert mt-3">Add New</button>
+    <button onClick={()=>navigate("/dashboard/payRoll/new")} className="btn btn-primary mt-3">Add New</button>
     : null
   }
        <div style={{ height: "350px", overflow: "auto" }}>
@@ -65,8 +65,8 @@ const EmployeePayroll = () => {
                   <td>{employeePayroll.netPay}</td>
                   {userRole === 'CEO' || userRole === 'HR' ?
                 <>
-               <td> <button onClick={() => handleDelete(employeePayroll)} className="button-delete">Delete</button> </td>
-               <td> <button onClick={()=>navigate(`/dashboard/payRoll/${employeePayroll._id}`)} className="button-update">Update</button> </td>
+               <td> <button onClick={() => handleDelete(employeePayroll)} className="btn btn-danger">Delete</button> </td>
+               <td> <button onClick={()=>navigate(`/dashboard/payRoll/${employeePayroll._id}`)} className="btn btn-warning">Update</button> </td>
                </>
                 : null
               }

@@ -37,7 +37,7 @@ const EmployeePerformance = () => {
     {userRole === 'CEO' || userRole === 'HR' || userRole === 'manager'?
       <button
         onClick={() => navigate("/dashboard/performance/new")}
-        className="button-insert mt-3"
+        className="btn btn-primary mt-3"
       >
         Add New
       </button>
@@ -82,7 +82,7 @@ const EmployeePerformance = () => {
                 <button
                   onClick={() => handleDelete(employeePerform)}
                   type="button"
-                  className="button-delete"
+                  className="btn btn-danger"
                 >
                   Delete
                 </button>{" "}
@@ -94,7 +94,7 @@ const EmployeePerformance = () => {
                     navigate(`/dashboard/performance/${employeePerform._id}`)
                   }
                   tyep="button"
-                  className="button-update"
+                  className="btn btn-warning"
                 >
                   Update
                 </button>{" "}

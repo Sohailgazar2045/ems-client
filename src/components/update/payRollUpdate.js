@@ -2,7 +2,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./employeeUpdate.css";
+import Joi from "joi";
 
+
+const schema = Joi.object({
+  payPeriod: Joi.string().required(),
+  salary: Joi.number().positive().required(),
+  taxas : Joi.string().required(),
+  deductions : Joi.string().required(),
+  totallDeductions : Joi.string().required(),
+  totalEarning : Joi.string().required(),
+  netPay : Joi.string().required(),
+});    
 const UpdatePayRoll = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -16,6 +27,7 @@ const UpdatePayRoll = () => {
     netPay: "",
   });
 
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (id === "new") return;
@@ -62,8 +74,19 @@ const UpdatePayRoll = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!update.payPeriod || !update.salary || !update.taxas || !update.deductions || !update.totallDeductions || !update.totalEarning || !update.netPay) {
-      alert("Please fill in all fields.");
+    // if (!update.payPeriod || !update.salary || !update.taxas || !update.deductions || !update.totallDeductions || !update.totalEarning || !update.netPay) {
+    //   alert("Please fill in all fields.");
+    //   return;
+    // }
+
+    try {
+      await schema.validateAsync(update, { abortEarly: false });
+    } catch (error) {
+      const newErrors = {};
+      error.details.forEach((detail) => {
+        newErrors[detail.path[0]] = detail.message;
+      });
+      setErrors(newErrors);
       return;
     }
 
@@ -84,10 +107,10 @@ const UpdatePayRoll = () => {
       <form>
         <label>PayPeriod Months:</label>
         <input className="update" type="number" name="payPeriod" value={update.payPeriod} onChange={handleChange} onBlur={calculateFields} />
-
+        {errors.payPeriod && <div style={{ color: "red" }}>{errors.payPeriod}</div>}
         <label>Salary:</label>
         <input className="update" type="text" name="salary"  value={update.salary} onChange={handleChange} onBlur={calculateFields} />
-
+        {errors.salary && <div style={{ color: "red" }}>{errors.salary}</div>}
         <label>Taxas:</label>
         <input className="update" type="text" name="taxas" value={update.taxas} onChange={handleChange} onBlur={calculateFields} disabled />
 

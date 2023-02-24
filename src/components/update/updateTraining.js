@@ -2,6 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./employeeUpdate.css";
+import Joi from "joi";
+
+const schema = Joi.object({
+  trainingProgram: Joi.string().min(3).required(),
+  startDate: Joi.date().required(),
+  endDate: Joi.date().greater(Joi.ref('startDate')).required(),
+  skillAquired: Joi.string().min(3).required(),
+});
 
 const UpdateTraining = () => {
   const navigate = useNavigate();
@@ -12,7 +20,7 @@ const UpdateTraining = () => {
     endDate: "",
     skillAquired:""
   });
-
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (id === "new") return;
@@ -42,10 +50,22 @@ const UpdateTraining = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!update.trainingProgram || !update.startDate || !update.endDate || !update.skillAquired) {
-      alert("Please fill in all fields.");
-    }
+    // if (!update.trainingProgram || !update.startDate || !update.endDate || !update.skillAquired) {
+    //   alert("Please fill in all fields.");
+    // }
     
+    try {
+      await schema.validateAsync(update, { abortEarly: false });
+    } catch (error) {
+      const newErrors = {};
+      error.details.forEach((detail) => {
+        newErrors[detail.path[0]] = detail.message;
+      });
+      setErrors(newErrors);
+      return;
+    }
+
+
     try {
       if (id === "new") {
         await axios.post("http://localhost:5000/api/employeeTraining", update);
@@ -62,17 +82,17 @@ const UpdateTraining = () => {
     <div className="container">
       <form>
       <label>trainingProgram:</label>
-        <input className="update" type="text" name="trainingProgram" value={update.trainingProgram} onChange={handleChange} />
-
+        <input className="update" type="text" name="trainingProgram" maxLength={20} value={update.trainingProgram} onChange={handleChange} />
+        {errors.trainingProgram && <div style={{ color: "red" }}>{errors.trainingProgram}</div>}
         <label>startDate:</label>
         <input className="update" type="date" name="startDate" value={update.startDate} onChange={handleChange} />
-
+        {errors.startDate && <div style={{ color: "red" }}>{errors.startDate}</div>}
         <label>endDate:</label>
         <input className="update" type="date" name="endDate"  value={update.endDate} onChange={handleChange} />
-
+        {errors.endDate && <div style={{ color: "red" }}>{errors.endDate}</div>}
         <label>skillAquired:</label>
-        <input className="update" type="text" name="skillAquired" value={update.skillAquired} onChange={handleChange} />
-
+        <input className="update" type="text" name="skillAquired" maxLength={20} value={update.skillAquired} onChange={handleChange} />
+        {errors.skillAquired && <div style={{ color: "red" }}>{errors.skillAquired}</div>}
       </form>
 
       <div className="center">

@@ -27,7 +27,7 @@ const RoleView = () => {
 
   return (
     <>
-    <button onClick={()=>navigate("/dashboard/createRole/new")} className="button-insert mt-3">Add New</button>
+    <button onClick={()=>navigate("/dashboard/createRole/new")} className="btn btn-primary mt-3">Add New</button>
          
          <div style={{ height: "350px", overflow: "auto" }}>
           <table>
@@ -46,8 +46,8 @@ const RoleView = () => {
                   <td>{userRole.userName}</td>
                   <td>{userRole.email}</td>
                   <td>{userRole.role}</td>
-               <td> <button onClick={() => handleDelete(userRole)} className="button-delete">Delete</button> </td>
-               <td> <button onClick={()=>navigate(`/dashboard/createRole/${userRole._id}`)} className="button-update">Update</button> </td>
+               <td> <button onClick={() => handleDelete(userRole)} className="btn btn-danger">Delete</button> </td>
+               <td> <button onClick={()=>navigate(`/dashboard/createRole/${userRole._id}`)} className="btn btn-warning">Update</button> </td>
                 </tr>
               ))}
             </tbody>

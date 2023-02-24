@@ -29,7 +29,7 @@ const EmployeeAttendance = () => {
   return (
     <>
     {userRole === 'CEO' || userRole === 'HR' || userRole === 'employee' || userRole === 'manager'?
-      <button onClick={()=>navigate("/dashboard/attendance/new")} className="button-insert mt-3">Add New</button>
+      <button onClick={()=>navigate("/dashboard/attendance/new")} className="btn btn-primary mt-3">Add New</button>
       : null
     }
      
@@ -59,12 +59,12 @@ const EmployeeAttendance = () => {
               {userRole === 'CEO' || userRole === 'HR' ?
                 <>
               <td>
-                <button onClick={() => handleDelete(employeeAt)} className="button-delete">
+                <button onClick={() => handleDelete(employeeAt)} className="btn btn-danger">
                   Delete
                 </button>
               </td>
               <td>
-                <button  onClick={()=>navigate(`/dashboard/attendance/${employeeAt._id}`)} className="button-update">
+                <button  onClick={()=>navigate(`/dashboard/attendance/${employeeAt._id}`)} className="btn btn-warning">
                   Update
                 </button>
               </td>

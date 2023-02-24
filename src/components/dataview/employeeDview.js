@@ -42,7 +42,7 @@ const EmployeeDview = () => {
   return (
     <>
     <div >
-       <button onClick={()=>navigate("/dashboard/employeedview/new")} className="button-insert mt-3">Add New</button>
+       <button onClick={()=>navigate("/dashboard/employeedview/new")} className="btn btn-primary mt-3">Add New</button>
       </div>
       <div style={{ height: "350px", overflow: "auto" }}>
     <table>
@@ -67,8 +67,8 @@ const EmployeeDview = () => {
             <td>{employeedir.department}</td>
             <td>{employeedir.contactInformation}</td>
             <td>{employeedir.dateOfHire}</td>
-               <td> <button  onClick={() => handleDelete(employeedir)} className="button-delete">Delete</button> </td>
-              <td><button onClick={()=>navigate(`/dashboard/employeedview/${employeedir._id}`)} className="button-update">Update</button> </td>
+               <td> <button  onClick={() => handleDelete(employeedir)} className="btn btn-danger">Delete</button> </td>
+              <td><button onClick={()=>navigate(`/dashboard/employeedview/${employeedir._id}`)} className="btn btn-warning">Update</button> </td>
           </tr>
         ))}
       </tbody>

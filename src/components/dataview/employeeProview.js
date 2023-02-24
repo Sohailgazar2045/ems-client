@@ -29,7 +29,7 @@ const EmployeeProfile = () => {
   return (
     <>
     {userRole === 'CEO' || userRole === 'HR' ?
-      <button onClick={()=>navigate("/dashboard/employee/new")} className="button-insert mt-3">Add New</button>
+      <button onClick={()=>navigate("/dashboard/employee/new")} className="btn btn-primary mt-3">Add New</button>
       : null
     }
     <table>
@@ -61,12 +61,12 @@ const EmployeeProfile = () => {
               {userRole === 'CEO' || userRole === 'HR' ?
                 <>
               <td>
-                <button onClick={() => handleDelete(employee)} className="button-delete">
+                <button onClick={() => handleDelete(employee)} className="btn btn-danger">
                   Delete
                 </button>
               </td>
               <td>
-                <button onClick={()=>navigate(`/dashboard/employee/${employee._id}`)} className="button-update">
+                <button onClick={()=>navigate(`/dashboard/employee/${employee._id}`)} className="btn btn-warning">
                   Update
                 </button>
               </td>

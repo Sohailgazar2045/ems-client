@@ -26,7 +26,7 @@ const EmployeeHiringView = () => {
   };
   return (
     <>
-    <button onClick={()=>navigate("/dashboard/hiring/new")} className="button-insert mt-3">Add New</button>
+    <button onClick={()=>navigate("/dashboard/hiring/new")} className="btn btn-primary mt-3">Add New</button>
          <div style={{ height: "350px", overflow: "auto" }}>
           <table>
             <thead style={{position: "sticky"  , top: "0"}}>
@@ -58,10 +58,10 @@ const EmployeeHiringView = () => {
                   <td>{employeehire.hireDate}</td>
                   
               <td>
-                <button  onClick={() => handleDelete(employeehire)} className="button-delete">Delete</button>
+                <button  onClick={() => handleDelete(employeehire)} className="btn btn-danger">Delete</button>
                 </td>
                 <td>
-                <button onClick={()=>navigate(`/dashboard/hiring/${employeehire._id}`)} className="button-update">Update</button>
+                <button onClick={()=>navigate(`/dashboard/hiring/${employeehire._id}`)} className="btn btn-warning">Update</button>
                 </td>
                 </tr>
               ))}
